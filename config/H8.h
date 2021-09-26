@@ -5,11 +5,11 @@
 
 // Defines indicator's parameter values for the given pair symbol and timeframe.
 struct Indi_Chaikin_Params_H8 : ChaikinIndiParams {
-  Indi_Chaikin_Params_H8() : ChaikinIndiParams(indi_demo_defaults, PERIOD_H8) { shift = 0; }
-} indi_demo_h8;
+  Indi_Chaikin_Params_H8() : ChaikinIndiParams(indi_cho_defaults, PERIOD_H8) { shift = 0; }
+} indi_cho_h8;
 
 // Defines strategy's parameter values for the given pair symbol and timeframe.
 struct Stg_Chaikin_Params_H8 : StgParams {
   // Struct constructor.
-  Stg_Chaikin_Params_H8() : StgParams(stg_demo_defaults) {}
-} stg_demo_h8;
+  Stg_Chaikin_Params_H8() : StgParams(stg_cho_defaults) {}
+} stg_cho_h8;

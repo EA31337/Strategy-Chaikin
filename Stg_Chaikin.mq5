@@ -7,9 +7,10 @@
 #include "config/define.h"
 
 // Includes EA31337 framework.
+#include <EA31337-classes/Storage/ValueStorage.all.h>
+
 #include <EA31337-classes/EA.mqh>
 #include <EA31337-classes/Indicators/Indi_CHO.mqh>
-#include <EA31337-classes/Storage/ValueStorage.all.h>
 #include <EA31337-classes/Strategy.mqh>
 
 // Inputs.

@@ -74,12 +74,12 @@ class Stg_Chaikin : public Strategy {
 
   static Stg_Chaikin *Init(ENUM_TIMEFRAMES _tf = NULL) {
     // Initialize strategy initial values.
-    IndiChaikinParamsDefaults _indi_chaikin_defaults;
-    CHOParams _indi_params(_indi_chaikin_defaults, _tf);
+    IndiChaikinParamsDefaults _indi_cho_defaults;
+    CHOParams _indi_params(_indi_cho_defaults, _tf);
     StgParams _stg_params(stg_chaikin_defaults);
 #ifdef __config__
-    SetParamsByTf<IndiChaikinParams>(_indi_params, _tf, indi_chaikin_m1, indi_chaikin_m5, indi_chaikin_m15,
-                                     indi_chaikin_m30, indi_chaikin_h1, indi_chaikin_h4, indi_chaikin_h8);
+    SetParamsByTf<IndiChaikinParams>(_indi_params, _tf, indi_cho_m1, indi_cho_m5, indi_cho_m15, indi_cho_m30,
+                                     indi_cho_h1, indi_cho_h4, indi_cho_h8);
     SetParamsByTf<StgParams>(_stg_params, _tf, stg_chaikin_m1, stg_chaikin_m5, stg_chaikin_m15, stg_chaikin_m30,
                              stg_chaikin_h1, stg_chaikin_h4, stg_chaikin_h8);
 #endif
