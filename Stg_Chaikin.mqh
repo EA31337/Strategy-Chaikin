@@ -37,8 +37,9 @@ struct IndiChaikinParamsDefaults : CHOParams {
   IndiChaikinParamsDefaults()
       : CHOParams(::Chaikin_Indi_Chaikin_InpFastMA, ::Chaikin_Indi_Chaikin_InpSlowMA,
                   ::Chaikin_Indi_Chaikin_InpSmoothMethod, ::Chaikin_Indi_Chaikin_InpVolumeType,
-                  ::Chaikin_Indi_Chaikin_Shift, PERIOD_CURRENT
-                  /*, ::Chaikin_Indi_Chaikin_SourceType*/) {}
+                  ::Chaikin_Indi_Chaikin_Shift) {
+    SetDataSourceType(::Chaikin_Indi_Chaikin_SourceType);
+  }
 };
 
 // Defines struct with default user strategy values.
