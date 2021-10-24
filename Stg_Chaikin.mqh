@@ -33,11 +33,11 @@ INPUT ENUM_IDATA_SOURCE_TYPE Chaikin_Indi_Chaikin_SourceType = IDATA_BUILTIN;  /
 // Structs.
 
 // Defines struct with default user indicator values.
-struct IndiChaikinParamsDefaults : CHOParams {
+struct IndiChaikinParamsDefaults : IndiCHOParams {
   IndiChaikinParamsDefaults()
-      : CHOParams(::Chaikin_Indi_Chaikin_InpFastMA, ::Chaikin_Indi_Chaikin_InpSlowMA,
-                  ::Chaikin_Indi_Chaikin_InpSmoothMethod, ::Chaikin_Indi_Chaikin_InpVolumeType,
-                  ::Chaikin_Indi_Chaikin_Shift) {
+      : IndiCHOParams(::Chaikin_Indi_Chaikin_InpFastMA, ::Chaikin_Indi_Chaikin_InpSlowMA,
+                      ::Chaikin_Indi_Chaikin_InpSmoothMethod, ::Chaikin_Indi_Chaikin_InpVolumeType,
+                      ::Chaikin_Indi_Chaikin_Shift) {
     SetDataSourceType(::Chaikin_Indi_Chaikin_SourceType);
   }
 };
@@ -76,7 +76,7 @@ class Stg_Chaikin : public Strategy {
   static Stg_Chaikin *Init(ENUM_TIMEFRAMES _tf = NULL) {
     // Initialize strategy initial values.
     IndiChaikinParamsDefaults _indi_cho_defaults;
-    CHOParams _indi_params(_indi_cho_defaults, _tf);
+    IndiCHOParams _indi_params(_indi_cho_defaults, _tf);
     StgParams _stg_params(stg_chaikin_defaults);
 #ifdef __config__
     SetParamsByTf<IndiChaikinParams>(_indi_params, _tf, indi_cho_m1, indi_cho_m5, indi_cho_m15, indi_cho_m30,
