@@ -75,12 +75,8 @@ class Stg_Chaikin : public Strategy {
 
   static Stg_Chaikin *Init(ENUM_TIMEFRAMES _tf = NULL) {
     // Initialize strategy initial values.
-    IndiChaikinParamsDefaults _indi_cho_defaults;
-    IndiCHOParams _indi_params(_indi_cho_defaults, _tf);
     StgParams _stg_params(stg_chaikin_defaults);
 #ifdef __config__
-    SetParamsByTf<IndiChaikinParams>(_indi_params, _tf, indi_cho_m1, indi_cho_m5, indi_cho_m15, indi_cho_m30,
-                                     indi_cho_h1, indi_cho_h4, indi_cho_h8);
     SetParamsByTf<StgParams>(_stg_params, _tf, stg_chaikin_m1, stg_chaikin_m5, stg_chaikin_m15, stg_chaikin_m30,
                              stg_chaikin_h1, stg_chaikin_h4, stg_chaikin_h8);
 #endif
@@ -89,8 +85,16 @@ class Stg_Chaikin : public Strategy {
     ChartParams _cparams(_tf, _Symbol);
     TradeParams _tparams;
     Strategy *_strat = new Stg_Chaikin(_stg_params, _tparams, _cparams, "Chaikin");
-    _strat.SetIndicator(new Indi_CHO(_indi_params));
     return _strat;
+  }
+
+  /**
+   * Event on strategy's init.
+   */
+  void OnInit() {
+    IndiChaikinParamsDefaults _indi_cho_defaults;
+    IndiCHOParams _indi_params(_indi_cho_defaults, Get<ENUM_TIMEFRAMES>(STRAT_PARAM_TF));
+    SetIndicator(new Indi_CHO(_indi_params));
   }
 
   /**
