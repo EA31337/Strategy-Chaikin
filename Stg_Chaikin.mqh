@@ -85,16 +85,15 @@ class Stg_Chaikin : public Strategy {
     IndiCHOParams _indi_params(::Chaikin_Indi_Chaikin_InpFastMA, ::Chaikin_Indi_Chaikin_InpSlowMA,
                                ::Chaikin_Indi_Chaikin_InpSmoothMethod, ::Chaikin_Indi_Chaikin_InpVolumeType,
                                ::Chaikin_Indi_Chaikin_Shift);
-    _indi_params.SetDataSourceType(::Chaikin_Indi_Chaikin_SourceType);
     _indi_params.SetTf(Get<ENUM_TIMEFRAMES>(STRAT_PARAM_TF));
-    SetIndicator(new Indi_CHO(_indi_params));
+    SetIndicator(new Indi_CHO(_indi_params, ::Chaikin_Indi_Chaikin_SourceType));
   }
 
   /**
    * Check strategy's opening signal.
    */
   bool SignalOpen(ENUM_ORDER_TYPE _cmd, int _method, float _level = 0.0f, int _shift = 0) {
-    Indi_CHO *_indi = GetIndicator();
+    IndicatorData *_indi = GetIndicator();
     bool _result =
         _indi.GetFlag(INDI_ENTRY_FLAG_IS_VALID, _shift) && _indi.GetFlag(INDI_ENTRY_FLAG_IS_VALID, _shift + 3);
     if (!_result) {
