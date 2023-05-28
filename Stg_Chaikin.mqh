@@ -63,7 +63,7 @@ class Stg_Chaikin : public Strategy {
   Stg_Chaikin(StgParams &_sparams, TradeParams &_tparams, ChartParams &_cparams, string _name = "")
       : Strategy(_sparams, _tparams, _cparams, _name) {}
 
-  static Stg_Chaikin *Init(ENUM_TIMEFRAMES _tf = NULL) {
+  static Stg_Chaikin *Init(ENUM_TIMEFRAMES _tf = NULL, EA* _ea = NULL) {
     // Initialize strategy initial values.
     StgParams _stg_params(stg_chaikin_defaults);
 #ifdef __config__
